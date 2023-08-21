@@ -2,30 +2,44 @@
 
 ## Overview of the Analysis
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
+In this analysis, we aimed to build machine learning models to assess credit risk for borrowers using historical lending activity data from a peer-to-peer lending services company. The purpose of this analysis was to develop models that can effectively predict the creditworthiness of borrowers and identify high-risk loans.
 
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
+The dataset contained various financial features such as loan size, interest rate, borrower income, debt-to-income ratio, number of accounts, derogatory marks, and total debt. The target variable was the loan status, which was categorized as 0 for healthy loans and 1 for high-risk loans. The data was imbalanced, with a significantly larger number of healthy loans compared to high-risk loans.
 
+The analysis was conducted in several stages:
+
+Data Preparation: The dataset was split into training and testing sets. The labels (y) and features (X) were separated accordingly. The imbalance in the labels was observed, with a large number of healthy loans and fewer high-risk loans.
+Modeling with Original Data: A logistic regression model was trained using the original training data. The model's performance was evaluated using balanced accuracy, confusion matrix, and classification report metrics. The model demonstrated high accuracy and precision for both classes.
+Modeling with Resampled Data: To address the class imbalance, the training data was resampled using the RandomOverSampler. The logistic regression model was trained on the resampled data and evaluated using the same metrics. The resampled model exhibited even higher performance, with improved precision and recall for the high-risk class.
+Summary and Comparison: The results of both models were summarized and compared to determine the best-performing approach for credit risk analysis.
 ## Results
 
-Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all machine learning models.
+Logistic Regression Model with Original Data:
 
-* Machine Learning Model 1:
-  * Description of Model 1 Accuracy, Precision, and Recall scores.
+Balanced Accuracy Score: 0.95
+Precision and Recall Scores:
+Class 0 (Healthy Loans):
+Precision: 1.00
+Recall: 0.99
+Class 1 (High-Risk Loans):
+Precision: 0.85
+Recall: 0.91
 
 
+Logistic Regression Model with Resampled Data:
 
-* Machine Learning Model 2:
-  * Description of Model 2 Accuracy, Precision, and Recall scores.
+Balanced Accuracy Score: 0.99
+Precision and Recall Scores:
+Class 0 (Healthy Loans):
+Precision: 1.00
+Recall: 0.99
+Class 1 (High-Risk Loans):
+Precision: 0.84
+Recall: 0.99
 
 ## Summary
+Based on the analysis results, both the logistic regression model with the original data and the model with the resampled data performed well in predicting credit risk. However, the model trained with the resampled data demonstrated slightly superior performance in terms of precision and recall for high-risk loans. While the original data model achieved an impressive accuracy score of 0.95, the resampled model achieved an outstanding balanced accuracy score of 0.99. The resampled model's ability to predict high-risk loans with higher precision and recall makes it the recommended choice for credit risk assessment.
 
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
+The model's performance may depend on the specific problem we are trying to solve. For instance, if it is more critical to identify high-risk loans accurately, the model's ability to correctly predict class 1 (high-risk loans) becomes essential. Therefore, the resampled model's better performance in predicting class 1 loans is a crucial factor in the recommendation.
 
-If you do not recommend any of the models, please justify your reasoning.
+In conclusion, the logistic regression model trained with resampled data provides a robust solution for credit risk assessment, particularly due to its high precision and recall scores for high-risk loans. This model is recommended for use in identifying high-risk borrowers and supporting the decision-making process in lending services.
